@@ -2,16 +2,15 @@ const splitTheBill = (group) => {
 
   let total = 0
   // Array of keys/'name of person'
-  const groupNamesList = Object.keys(group)
-
+  const groupNamesList = Object.keys(group);
+  // To get the total bill
   groupNamesList.forEach(person => {
     total = total + group[person]
-  })
-
+  });
   // Average cost per pax
-  const perPerson = total / groupNamesList.length
+  const perPerson = total / groupNamesList.length;
 
-  let returnObject = {}
+  let amountOwed = {}
 
   groupNamesList.forEach(person => {
     let difference = group[person] - perPerson
@@ -22,11 +21,10 @@ const splitTheBill = (group) => {
       difference = Number(difference.toFixed(2))
     }
 
-    returnObject = { ...returnObject, [person]: difference }
+    amountOwed = { ...amountOwed, [person]: difference }
   })
 
-  return returnObject
-}
-
+  return amountOwed
+};
 
 module.exports = splitTheBill;
