@@ -11,6 +11,16 @@ The input is a string of only digits
 The numbers are positives */
 
 const add = (a, b) => {
+  const removeTrailingZeros = num => {
+    const numCopy = num.slice().split("");
+    const index = numCopy.findIndex(number => {
+      return number > 0;
+    });
+    return num.slice(index);
+  };
+  a = removeTrailingZeros(a);
+  b = removeTrailingZeros(b);
+
   let num1 = a;
   let num2 = b;
 
@@ -54,7 +64,7 @@ const add = (a, b) => {
   if (sum[sum.length - 1] === 0) {
     sum.pop();
   }
-  
+
   return sum.reverse().join("");
 };
 
